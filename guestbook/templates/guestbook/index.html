@@ -1,0 +1,16 @@
+{% extends 'guestbook/base.html' %}
+{% block content %}
+<a href="{% url 'guestbook_new' %}">Add new guest detail<span class="glyphicon glyphicon-plus"></span></a>
+
+{% if pname %}
+    <ul>
+    {% for person in pname %}
+        <li><a href="{% url 'detail' person.id  %}">{{ person.personname }}</a></li>
+
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No No Persons are available.</p>
+{% endif %}
+
+{% endblock %}

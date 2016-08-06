@@ -1,0 +1,19 @@
+{% extends 'guestbook/base.html' %}
+
+{% block content %}
+    <h1>New Guest</h1>
+    <form method="POST" class="post-form">{% csrf_token %}
+      {% for field in form %}
+      <fieldset class="form-group">
+    <label class="control-label" for="id_{{ field.name }}">{{ field.label }}</label>
+           {{ field.errors }}
+        <input type="text" class="form-control"
+          name="{{ field.name }}"
+          id="id_{{ field.name }}"
+          >
+  </fieldset>
+       {% endfor %}
+        <button type="submit" class="save btn btn-default">Save</button>
+    </form>
+
+{% endblock %}
